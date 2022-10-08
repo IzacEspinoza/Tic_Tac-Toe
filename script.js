@@ -27,14 +27,13 @@ function initializeGame(){//fills info for begining of game
     running = true;
 }
 function cellClicked(){
-    const cellIndex = this.getAttribute('cellIndex');
 
+    const cellIndex = this.getAttribute('cellIndex');
     if(options[cellIndex] != '' || !running){
         return;
     }
     
     updateCell(this, cellIndex);
-    //changePlayer();
     checkWinner();
 }
 function updateCell(cell, index){
@@ -76,5 +75,9 @@ function checkWinner(){
     }
 }
 function restartGame(){
-
+    currentPlayer = 'X';
+    let options = ['','','','','','','','',''];
+    statusText.textContent = `${currentPlayer}'s turn`;
+    cells.forEach(cell => cell.textContent = '');
+    running = true;
 }
