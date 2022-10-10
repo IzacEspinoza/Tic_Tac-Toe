@@ -19,13 +19,25 @@ let running = false;//is game running?
 
 //start of the game
 initializeGame();
-
+/*
 function initializeGame(){//fills info for begining of game
     cells.forEach(cell => cell.addEventListener('click', cellClicked));
     restartBtn.addEventListener('click', restartGame);
     statusText.textContent = `${currentPlayer}'s turn`;
     running = true;
 }
+*/
+
+//Putting initializeGame() into the a module
+const initializeGame = (() => {
+    cells.forEach(cell => cell.addEventListener('click', cellClicked));
+    restartBtn.addEventListener('click', restartGame);
+    statusText.textContent = `${currentPlayer}'s turn`;
+    running = true;
+})();
+
+
+
 function cellClicked(){
 
     const cellIndex = this.getAttribute('cellIndex');
